@@ -44,7 +44,7 @@ def configure_app(app, archive, debug):
 @click.option('-p', '--port', default=envvar('SEV_PORT', '5000'),
               type=click.INT, help="Host port to serve your content on")
 @click.option("-z", "--archive", type=click.Path(), required=True,
-              default=envvar('SEV_ARCHIVE', ''),
+              default=envvar('SEV_ARCHIVE', 'ghfr.zip'),
               help="Path to your Slack export archive (.zip file or directory)")
 @click.option('-I', '--ip', default=envvar('SEV_IP', 'localhost'),
               type=click.STRING, help="Host IP to serve your content on")
@@ -54,13 +54,13 @@ def configure_app(app, archive, debug):
                    "automatically, set this.")
 @click.option('--debug', is_flag=True, default=flag_ennvar("FLASK_DEBUG"))
 def main(port, archive, ip, no_browser, debug):
-    if not archive:
-        raise ValueError("Empty path provided for archive")
+    # if not archive:
+    #     raise ValueError("Empty path provided for archive")
 
     configure_app(app, archive, debug)
 
-    if not no_browser:
-        webbrowser.open("http://{}:{}".format(ip, port))
+    # if not no_browser:
+    #     webbrowser.open("http://{}:{}".format(ip, port))
 
     app.run(
         host=ip,
