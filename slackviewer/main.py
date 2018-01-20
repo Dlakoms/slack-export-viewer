@@ -53,7 +53,8 @@ def configure_app(app, archive, debug):
 #               help="If you do not want a browser to open "
 #                    "automatically, set this.")
 # @click.option('--debug', is_flag=True, default=flag_ennvar("FLASK_DEBUG"))
-def main():
+def main(*args):
+    print(f'args are {args}')
     # if not archive:
     #     raise ValueError("Empty path provided for archive")
 
