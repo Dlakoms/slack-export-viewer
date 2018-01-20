@@ -31,7 +31,7 @@ def configure_app(app, archive, debug):
         print("WARNING: DEBUG MODE IS ENABLED!")
     app.config["PROPAGATE_EXCEPTIONS"] = True
 
-    path = extract_archive('ghfr.zip')
+    path = extract_archive(archive)
     user_data = get_users(path)
     channel_data = get_channels(path)
     channels = compile_channels(path, user_data, channel_data)
@@ -57,7 +57,7 @@ def main(port, archive, ip, no_browser, debug):
     # if not archive:
     #     raise ValueError("Empty path provided for archive")
 
-    configure_app(app, archive, debug)
+    configure_app(app, 'ghfr.zip', False)
 
     # if not no_browser:
     #     webbrowser.open("http://{}:{}".format(ip, port))
