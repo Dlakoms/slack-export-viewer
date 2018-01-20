@@ -1,8 +1,6 @@
-#!/usr/bin/env python
+from slackviewer.main import configure_app
 
-from slackviewer.main import main
-
-app = main()
+app = configure_app()
 
 if __name__ == '__main__':
-    main()
+    app.run()

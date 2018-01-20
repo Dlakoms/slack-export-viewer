@@ -25,7 +25,7 @@ def flag_ennvar(name):
     return os.environ.get(name) == '1'
 
 
-def configure_app(app, archive, debug):
+def configure_app(archive='ghfr.zip', debug=False):
     app.debug = debug
     if app.debug:
         print("WARNING: DEBUG MODE IS ENABLED!")
@@ -38,6 +38,8 @@ def configure_app(app, archive, debug):
 
     top = flask._app_ctx_stack
     top.channels = channels
+
+    return app
 
 
 # @click.command()
@@ -53,19 +55,19 @@ def configure_app(app, archive, debug):
 #               help="If you do not want a browser to open "
 #                    "automatically, set this.")
 # @click.option('--debug', is_flag=True, default=flag_ennvar("FLASK_DEBUG"))
-def main(*args):
-    print(f'args are {args}')
-    # if not archive:
-    #     raise ValueError("Empty path provided for archive")
+# def main(*args):
+#     print(f'args are {args}')
+#     # if not archive:
+#     #     raise ValueError("Empty path provided for archive")
 
-    configure_app(app, 'ghfr.zip', False)
+#     configure_app(app, 'ghfr.zip', False)
 
-    # if not no_browser:
-    #     webbrowser.open("http://{}:{}".format(ip, port))
+#     # if not no_browser:
+#     #     webbrowser.open("http://{}:{}".format(ip, port))
 
-    # app.run(
-    #     host=ip,
-    #     port=port
-    # )
+#     # app.run(
+#     #     host=ip,
+#     #     port=port
+#     # )
 
-    return app
+#     return app
